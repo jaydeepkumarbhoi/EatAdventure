@@ -17,6 +17,9 @@ public class CustomerGenerator : MonoBehaviour
 
     Action OnShafeAlert;
 
+    public bool isorderProgress = false;
+
+    public static CustomerGenerator instance;
 
     private void OnEnable()
     {
@@ -24,7 +27,7 @@ public class CustomerGenerator : MonoBehaviour
     }
     private void Start()
     {
-
+        instance = this;
         customer = CustomerObjPool.instance.getPoolGameObject();
 
         if (customer != null)
@@ -37,32 +40,65 @@ public class CustomerGenerator : MonoBehaviour
             StartCoroutine(customerMovement(customer, customerPoints[0]));
         }
 
+    }
+
+
+    IEnumerator foodPos(GameObject shapePoint, GameObject shafeChar)
+    {
+        if (CircleFillHandler.isChefefoodPos == true)
+        {
+            while (true)
+            {
+
+                shafeChar.transform.position = Vector3.MoveTowards(shafeChar.transform.position,
+               new Vector3(shapePoint.transform.position.x, shafeChar.transform.position.y, shapePoint.transform.position.z), 2f * Time.deltaTime);
 
 
 
-        
+                if (shafeChar.transform.position.x == shapePoint.transform.position.x)
+                {
+                    isorderProgress = true;
+
+                    Debug.Log("Hey---" + isorderProgress);
+                    break;
+                }
+
+                yield return null;
+                yield return StartCoroutine(shafeMovement(shafeChar, shafePoint[0]));
+            }
+        }
+
+
     }
 
 
 
     IEnumerator shafeMovement(GameObject shafeChar, GameObject shapePoint)
     {
+      
 
-        while (true)
-        {
-            Debug.Log("Calls3333");
-            shafeChar.transform.position = Vector3.MoveTowards(shafeChar.transform.position,
-           new Vector3(shapePoint.transform.position.x, shafeChar.transform.position.y,shapePoint.transform.position.z), 2f * Time.deltaTime);
-
-
-
-            if (shafeChar.transform.position.x == shapePoint.transform.position.x)
+            while (true)
             {
-                break;
+
+                shafeChar.transform.position = Vector3.MoveTowards(shafeChar.transform.position,
+               new Vector3(shapePoint.transform.position.x, shafeChar.transform.position.y, shapePoint.transform.position.z), 2f * Time.deltaTime);
+
+
+
+                if (shafeChar.transform.position.x == shapePoint.transform.position.x)
+                {
+                    isorderProgress = true;
+
+                    Debug.Log("Hey---" + isorderProgress);
+                    break;
+                }
+
+                yield return null;
+                yield return StartCoroutine(foodPos(shafeChar, shafePoint[0]));
             }
 
-            yield return null;
-        }
+        
+        
         
 
 
