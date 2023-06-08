@@ -2,27 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DG.Tweening;
 
-public  class CharacterMovement : MonoBehaviour
+public static class CharacterMovement
 {
 
-    public  void MovementCall(Transform currentObjPos, Vector3 finalPos, Action callBack)
+
+
+    public static void MovementCall(Transform currentObjPos, Vector3 finalPos, Action callBack)
     {
-        StartCoroutine(ObjMovement( currentObjPos,  finalPos,  callBack));
+        var sequence = DOTween.Sequence();
+
+        sequence.Append(currentObjPos.transform.DOMove(finalPos, 1f).SetEase(Ease.Linear));
+        sequence.OnComplete(() =>
+        {
+            callBack?.Invoke();
+        });
     }
 
 
-    IEnumerator ObjMovement(Transform currentObjPos, Vector3 finalPos, Action callBack)
-    {
 
-        currentObjPos.position = Vector3.MoveTowards(currentObjPos.position,
-             finalPos, 2f * Time.deltaTime);
-
-        callBack?.Invoke();
-
-
-        yield return null;
-    }
-
- 
 }

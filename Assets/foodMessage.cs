@@ -11,7 +11,7 @@ public class foodMessage : MonoBehaviour
     {
 
 
-       FoodSuggestion.instance.foodSuggetionCall(foodImg);
+        FoodSuggestion.instance.foodSuggetionCall(foodImg);
 
         StartCoroutine(callSuggetion());
 
@@ -20,19 +20,18 @@ public class foodMessage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator callSuggetion()
     {
-        Debug.Log("jjj");
+
         while (true)
         {
-            Debug.Log("jjaaajj");
+
 
             if (CustomerGenerator.instance.isorderProgress == true)
             {
-                Debug.Log("jjsssssj");
 
                 foodPopup.SetActive(true);
                 break;

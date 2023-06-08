@@ -44,10 +44,7 @@ public class CustomerObjPool : MonoBehaviour
     }
 
 
-    void Update()
-    {
 
-    }
 }
 
 
