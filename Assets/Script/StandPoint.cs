@@ -9,12 +9,15 @@ public class StandPoint : MonoBehaviour
     public Transform CustomerTempPointPos;
     public Transform ChefTemepPointPos;
 
-        counter cs;
-
-    private void Start()
+    public static StandPoint instance;
+    private void Awake()
     {
+        instance = this;
         getOccupyCounter();
+        
     }
+
+ 
 
     public void getOccupyCounter()
     {

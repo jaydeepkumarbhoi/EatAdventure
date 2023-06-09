@@ -19,15 +19,25 @@ public class ChefGenerator : MonoBehaviour
         instance = this;
         OnmoveChef += chefMovement;
     }
+    private void OnDisable()
+    {
+        OnmoveChef -= chefMovement;
+    }
     void Start()
     {
 
     }
     public void chefMovement()
     {
-        chefObj.transform.DOMove(standpoint.ChefTemepPointPos.position, 1f).SetEase(Ease.Linear);
+
+        var sequence = DOTween.Sequence();
+        sequence.Append(chefObj.transform.DOMove(standpoint.ChefTemepPointPos.position, 1f).SetEase(Ease.Linear));
+        sequence.OnComplete(() => {
+           // CustomerGenerator.instance.isorderProgress = true;
+        });
     }
 
+   
 
     // Update is called once per frame
     void Update()

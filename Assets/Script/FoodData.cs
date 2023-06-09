@@ -7,6 +7,7 @@ using UnityEngine;
 public class FoodData : ScriptableObject
 {
     public List<FoodItems> foodDatas;
+
 }
 
 [Serializable]
@@ -16,11 +17,4 @@ public class FoodItems
     public Sprite sprite;
 }
 
-public enum Food
-{
-    Burger,
-    Tea,
-    Drink,
-    FrenchFries,
-    HotDog
-}
+

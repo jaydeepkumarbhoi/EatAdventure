@@ -18,7 +18,7 @@ public class CircleFillHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CustomerGenerator.instance.isorderProgress == true)
+//        if (CustomerGenerator.instance.isorderProgress == true)
         {
             holder.SetActive(true);
 

@@ -14,4 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodDatas:
   - food: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: d4804cc1433864aa7bca90c8973340fe, type: 3}
+  - food: 1
+    sprite: {fileID: 21300000, guid: bf170779cf2084e5188c7042dc9fd5c6, type: 3}
+  - food: 2
+    sprite: {fileID: 21300000, guid: 0a4a2caf698ef4fd6b2e4ff08cfc4490, type: 3}
+  - food: 3
+    sprite: {fileID: 21300000, guid: 5e85db7de5f114c078866aa845b6703a, type: 3}
+  - food: 4
+    sprite: {fileID: 21300000, guid: a9ee5e9228f7b48ffb88e30a61cdaa90, type: 3}

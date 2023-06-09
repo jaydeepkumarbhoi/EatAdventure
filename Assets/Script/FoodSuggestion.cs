@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,11 @@ using UnityEngine.UI;
 
 public class FoodSuggestion : MonoBehaviour
 {
-    public List<Sprite> foodSuggest;
+   
     public static FoodSuggestion instance;
+    public FoodData foodDataSo;
 
+   public static string foodItemsName;
     void Start()
     {
         //foodSuggest = new ();
@@ -24,12 +27,14 @@ public class FoodSuggestion : MonoBehaviour
 
     public void foodSuggetionCall(Image img)
     {
-
-        for (int i = 0; i <= foodSuggest.Count; i++)
+        int index;
+     
+        for (int i = 0; i < foodDataSo.foodDatas.Count; i++)
         {
-            img.sprite = foodSuggest[Random.Range(0, foodSuggest.Count)];
-
-            // Debug.Log("Random" + Random.Range(0, foodSuggest.Count - 1));
+            index = UnityEngine.Random.Range(0, foodDataSo.foodDatas.Count);
+            img.sprite = foodDataSo.foodDatas[index].sprite;
+            foodItemsName = foodDataSo.foodDatas[index].food.ToString();
+            break;
         }
     }
 }

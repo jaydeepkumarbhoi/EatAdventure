@@ -30,7 +30,7 @@ public class foodMessage : MonoBehaviour
         {
 
 
-            if (CustomerGenerator.instance.isorderProgress == true)
+           // if (CustomerGenerator.instance.isorderProgress == true)
             {
 
                 foodPopup.SetActive(true);

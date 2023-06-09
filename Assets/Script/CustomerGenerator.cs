@@ -7,14 +7,16 @@ using UnityEngine;
 public class CustomerGenerator : MonoBehaviour
 {
 
-    public int[] counter;
+   
     public List<GameObject> customerPoints;
 
     GameObject customer;
-    public bool isorderProgress;
+   
     public static CustomerGenerator instance;
+   
+  public CustomerMove customerMove;
+
     StandPoint sp;
-    public StandPoint standpoint;
     private void Start()
     {
 
@@ -35,9 +37,8 @@ public class CustomerGenerator : MonoBehaviour
             customer.transform.rotation = transform.rotation;
             customer.SetActive(true);
 
-            if (standpoint.CustomerTempPointPos.position != null)
-                CharacterMovement.MovementCall(customer.transform, standpoint.CustomerTempPointPos.position, ChefGenerator.instance.OnmoveChef);
-
+             if (StandPoint.instance.CustomerTempPointPos != null)
+                   customerMove.GotoCustomerCounter();
         }
 
     }
